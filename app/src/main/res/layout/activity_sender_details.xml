@@ -8,10 +8,11 @@
     tools:context="com.ilogs.projects.aalNotificationSender.SenderDetailsActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detail-Ansicht"
+        android:textSize="24sp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
@@ -20,7 +21,7 @@
         android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSendDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -29,5 +30,5 @@
         android:text="Send Details Notification"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
 </android.support.constraint.ConstraintLayout>

@@ -13,42 +13,44 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Startseite"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Send Notification"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"/>
+    <include layout="@layout/template_desktop_item"
+             android:id="@+id/llSendNotification"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="28dp"
+             app:layout_constraintTop_toBottomOf="@+id/textView"
+             android:layout_marginRight="8dp"
+             app:layout_constraintRight_toRightOf="parent"
+             android:layout_marginLeft="8dp"
+             app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <include layout="@layout/template_desktop_item"
+             android:id="@+id/llDeleteNotification"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="28dp"
+             app:layout_constraintTop_toBottomOf="@+id/llSendNotification"
+             android:layout_marginRight="8dp"
+             app:layout_constraintRight_toRightOf="parent"
+             android:layout_marginLeft="8dp"
+             app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="@dimen/margin12"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
         android:text="Go To Details"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Delete Last Notification"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"/>
 
 </android.support.constraint.ConstraintLayout>

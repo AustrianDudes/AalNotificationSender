@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Waalter colors -->
+
+    <color name="waalter_red">#E82D1A</color>
+    <color name="waalter_grey">#5A5A5A</color>
+    <color name="waalter_brown">#6D4C41</color>
+    <color name="waalter_green">#2E7D32</color>
+    <color name="waalter_blue">#283593</color>
+
 </resources>

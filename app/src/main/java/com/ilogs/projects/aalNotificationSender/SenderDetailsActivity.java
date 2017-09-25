@@ -1,10 +1,7 @@
 package com.ilogs.projects.aalNotificationSender;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,19 +11,20 @@ import com.google.gson.Gson;
 import com.ilogs.projects.aalNotificationSender.messages.LocalMessage;
 import com.ilogs.projects.aalNotificationSender.messages.NotificationLocalMessage;
 
+import static com.ilogs.projects.aalNotificationSender.SenderActivity.ACTION_LOCAL_MESSAGE;
+import static com.ilogs.projects.aalNotificationSender.SenderActivity.EXTRA_MESSAGE;
+
 /**
  * Dummy details activity that sends intents to waalter launcher
  */
 public class SenderDetailsActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender_details);
 
-        Button button = (Button) findViewById(R.id.button2);
+        Button button = (Button) findViewById(R.id.btnSendDetail);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,8 +35,8 @@ public class SenderDetailsActivity extends AppCompatActivity {
 
     private void forwardLocalNotificationToWaalterLauncher() {
         final Intent intentIlogs = new Intent();
-        intentIlogs.setAction("ACTION_LOCAL_MESSAGE");
-        intentIlogs.putExtra("message",new Gson().toJson(getDummyNotification()));
+        intentIlogs.setAction(ACTION_LOCAL_MESSAGE);
+        intentIlogs.putExtra(EXTRA_MESSAGE, new Gson().toJson(getDummyNotification()));
         sendBroadcast(intentIlogs);
     }
 

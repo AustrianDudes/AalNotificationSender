@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin1">24dp</dimen>  <!-- 4mm eq = 1 -->
+    <dimen name="margin2">48dp</dimen>  <!-- 8mm eq -->
+    <dimen name="margin3">72dp</dimen>  <!-- 12mm eq -->
+    <dimen name="margin4">96dp</dimen>  <!-- 16mm eq -->
+    <dimen name="margin5">120dp</dimen> <!-- 20mm eq -->
+    <dimen name="margin6">144dp</dimen>
+    <dimen name="margin7">168dp</dimen>
+    <dimen name="margin8">192dp</dimen>
+    <dimen name="margin9">216dp</dimen>
+    <dimen name="margin10">240dp</dimen> <!-- 40mm eq -->
+    <dimen name="margin11">264dp</dimen>
+    <dimen name="margin12">288dp</dimen>
+    <dimen name="margin13">312dp</dimen>
+    <dimen name="margin14">336dp</dimen>
+    <dimen name="margin15">360dp</dimen> <!-- 60mm eq -->
+
+    <dimen name="cornerRadius">16dp</dimen>
+
+    <dimen name="elevationInteraction">8dp</dimen>
+
+</resources>

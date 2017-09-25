@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.ilogs.projects.aalNotificationSender.messages.CancelNotificationLocalMessage;
@@ -32,23 +33,32 @@ public class SenderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender);
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        WaalterBackgroundDrawable drawable = new WaalterBackgroundDrawable(this);
+
+        View llSendNotification = findViewById(R.id.llSendNotification);
+        llSendNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 forwardLocalNotificationToWaalterLauncher();
             }
         });
+        llSendNotification.findViewById(R.id.flIcon).setBackground(drawable);
+        ((TextView) llSendNotification.findViewById(R.id.tvTitle)).setText("Send Notification");
 
-        Button button4 = (Button) findViewById(R.id.button4);
-        button4.setOnClickListener(new View.OnClickListener() {
+        View llDeleteNotification = findViewById(R.id.llDeleteNotification);
+        llDeleteNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 forwardCancelNotificationToWaalterLauncher();
             }
         });
+        llDeleteNotification.findViewById(R.id.flIcon).setBackground(drawable);
+        ((TextView) llDeleteNotification.findViewById(R.id.tvTitle)).setText("Delete Last Notification");
 
-        Button button3 = (Button) findViewById(R.id.button3);
+        ButtonBackgroundDrawable buttonDrawable = new ButtonBackgroundDrawable(this, R.color.waalter_green);
+
+        Button button3 = (Button) findViewById(R.id.btnNext);
+        button3.setBackground(buttonDrawable);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
