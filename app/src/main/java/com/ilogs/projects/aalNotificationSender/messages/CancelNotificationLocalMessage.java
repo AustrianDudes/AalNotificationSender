@@ -1,11 +1,8 @@
 package com.ilogs.projects.aalNotificationSender.messages;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.UUID;
 

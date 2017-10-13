@@ -1,8 +1,11 @@
 package com.ilogs.projects.aalNotificationSender;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Parcel;
+import android.os.ParcelUuid;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +28,7 @@ public class SenderActivity extends AppCompatActivity {
 
     public static final String ACTION_LOCAL_MESSAGE = "ACTION_LOCAL_MESSAGE";
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
+    public static final String EXTRA_PENDING_INTENT = "EXTRA_PENDING_INTENT";
 
     private UUID mLastNotificationId;
 
@@ -33,8 +37,6 @@ public class SenderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender);
 
-        WaalterBackgroundDrawable drawable = new WaalterBackgroundDrawable(this);
-
         View llSendNotification = findViewById(R.id.llSendNotification);
         llSendNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +44,7 @@ public class SenderActivity extends AppCompatActivity {
                 forwardLocalNotificationToWaalterLauncher();
             }
         });
-        llSendNotification.findViewById(R.id.flIcon).setBackground(drawable);
+        llSendNotification.findViewById(R.id.flIcon).setBackground(new WaalterBackgroundDrawable(this));
         ((TextView) llSendNotification.findViewById(R.id.tvTitle)).setText("Send Notification");
 
         View llDeleteNotification = findViewById(R.id.llDeleteNotification);
@@ -52,11 +54,10 @@ public class SenderActivity extends AppCompatActivity {
                 forwardCancelNotificationToWaalterLauncher();
             }
         });
-        llDeleteNotification.findViewById(R.id.flIcon).setBackground(drawable);
+        llDeleteNotification.findViewById(R.id.flIcon).setBackground(new WaalterBackgroundDrawable(this));
         ((TextView) llDeleteNotification.findViewById(R.id.tvTitle)).setText("Delete Last Notification");
 
         ButtonBackgroundDrawable buttonDrawable = new ButtonBackgroundDrawable(this, R.color.waalter_green);
-
         Button button3 = (Button) findViewById(R.id.btnNext);
         button3.setBackground(buttonDrawable);
         button3.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +72,8 @@ public class SenderActivity extends AppCompatActivity {
         final Intent intentIlogs = new Intent();
         intentIlogs.setAction(ACTION_LOCAL_MESSAGE);
         intentIlogs.putExtra(EXTRA_MESSAGE, new Gson().toJson(getDummyNotification()));
+        intentIlogs.putExtra(EXTRA_PENDING_INTENT, getDummyPendingIntent());
+
         sendBroadcast(intentIlogs);
     }
 
@@ -87,10 +90,9 @@ public class SenderActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private LocalMessage getDummyNotification() {
-        Intent intent = getDummyIntent(this, "com.ilogs.projects.aalNotificationSender");
-        LocalMessage message = NotificationLocalMessage.newInstance("Test Nachricht", "Diese Nachricht wurde von der Test App " +
-                "\"Notification Sender\" erzeugt. Drücken sie auf den Button um zu dieser App zu kommen.", intent,
+    private NotificationLocalMessage getDummyNotification() {
+        NotificationLocalMessage message = NotificationLocalMessage.newInstance("Test Nachricht", "Diese Nachricht wurde von der Test App " +
+                "\"Notification Sender\" erzeugt. Drücken sie auf den Button um zu dieser App zu kommen.", null,
                 "Details");
 
         // Simple caching example
@@ -100,7 +102,13 @@ public class SenderActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private LocalMessage getDummyCancelNotification() {
+    private PendingIntent getDummyPendingIntent() {
+        Intent intent = getDummyIntent(this, "com.ilogs.projects.aalNotificationSender");
+        return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    @NonNull
+    private CancelNotificationLocalMessage getDummyCancelNotification() {
         return CancelNotificationLocalMessage.newInstance(mLastNotificationId);
     }
 

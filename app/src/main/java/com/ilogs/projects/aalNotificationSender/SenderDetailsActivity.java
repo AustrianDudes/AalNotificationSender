@@ -1,5 +1,6 @@
 package com.ilogs.projects.aalNotificationSender;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -44,13 +45,14 @@ public class SenderDetailsActivity extends AppCompatActivity {
      * !!! SenderDetailsActivity set to android:exported="true" AndroidManifest if implicit intent
      */
     @NonNull
-    private LocalMessage getDummyNotification() {
+    private NotificationLocalMessage getDummyNotification() {
         Intent intent = new Intent();
         intent.setPackage("com.ilogs.projects.aalNotificationSender");
         intent.setClass(this, SenderDetailsActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         return NotificationLocalMessage.newInstance("Dummy Detail Nachricht", "Diese Nachricht wurde von der Test App " +
-                        "\"Notification Sender\" erzeugt. Drücken sie auf den Button um zu dieser App zu kommen.", intent,
-                "Details");
+                        "\"Notification Sender\" erzeugt. Drücken sie auf den Button um zu dieser App zu kommen.",
+                pendingIntent, "Details");
     }
 
 }
